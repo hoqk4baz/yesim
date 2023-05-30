@@ -54,7 +54,7 @@ for i in range(count):
 toplam_y_coin = 0
 
 def basla(sira):
-    global total_y_coin
+    global toplam_y_coin
     while not sira.empty():
         url, headers = sira.get()
         try:
@@ -73,7 +73,7 @@ for i in range(count):
     t.start()
 
 sira.join()
-print("Toplam Alınan Y-Coin:", total_y_coin)
+print("Toplam Alınan Y-Coin:", toplam_y_coin)
 # -------------- Esim Almak ------------#
 
 try:
