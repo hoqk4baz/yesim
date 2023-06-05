@@ -29,7 +29,7 @@ sonuc1 = res1.json()
 
 # ------------------- Kod Onaylama session id çekme ---------------#
 kod = input("Kodu Gir: ")
-url2 = "https://iweb.yesim.app/v1/auth_code?code=" + kod + "&email=" + eposta + "&version=4.0.8&lang=en&platform=3"
+url2 = "https://iweb.yesim.app/v1/auth_code?code=" + kod + "&email=" + eposta + "&version=4.1.8&lang=en&platform=3"
 headers2 = {
     'Host': 'iweb.yesim.app'
 }
@@ -37,7 +37,7 @@ res2 = requests.post(url2, headers=headers2)
 sonuc2 = res2.json()["sessionId"]
 
 # ------------- Y Coin Çekme -----------#
-url3 = "https://iweb.yesim.app/v1/code_apply?ref_code&web_key=" + sonuc2 + "&ref_code=UMVM790&lang=en"
+url3 = "https://iweb.yesim.app/v1/code_apply?ref_code&web_key=" + sonuc2 + "&ref_code=RRAK201&lang=en"
 headers3 = {
     'Host': 'iweb.yesim.app'
 }
