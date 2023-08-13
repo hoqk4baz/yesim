@@ -18,6 +18,7 @@ with warnings.catch_warnings():
 
 Y = "\033[38;2;0;255;0m"
 K = "\033[38;2;255;0;0m"
+T = "\033[38;2;255;128;0m"
 R = "\033[0m"
 
 
@@ -35,11 +36,9 @@ print("\033[0m")
 print("\033[38;2;255;128;0m")
 print("                        ENZA")
 print("\033[38;2;255;0;255m")
-print("Bu Dünyanın Cefasından Sefasına")
-print("\033[38;2;255;0;255m")
-print("Sıra Gelmez Gafil Olma İlme Çalış")
+print("    By Hoqk4baZ")
 print("\033[38;2;153;0;204m")
-print("   Geçen Vakit Geri Gelmezz")
+print("Çalıp Satanın Bacısına Dw-Chat Girsin")
 print("\033[0m")
 
 print("\033[0;38;2;153;0;204m")
@@ -174,8 +173,9 @@ try:
     sonuc7 = dark1.json()["Qrs"]
     aktivasyon = sonuc7[0][1]
     smdp = sonuc7[0][2]
-    print(Y+"[=]SM+DP Adresi: "+smdp)
-    print(Y+"[=]Aktivasyon Kodu: "+aktivasyon)
+    print(T+"[=]SM+DP Adresi: "+smdp)
+    print(T+"[=]Aktivasyon Kodu: "+aktivasyon)
+    print(T+"Android: LPA:1&"+smdp+"&"+aktivasyon)
 except:
     console.set_color(1.0, 0.0, 0.0)
     print(K+"[-]KareKod Oluşturulamadı")
