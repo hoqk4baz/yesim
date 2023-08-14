@@ -175,7 +175,7 @@ try:
     smdp = sonuc7[0][2]
     print(T+"[=]SM+DP Adresi: "+smdp)
     print(T+"[=]Aktivasyon Kodu: "+aktivasyon)
-    print(T+"Android: LPA:1&"+smdp+"&"+aktivasyon)
+    print(T+"Android: LPA:1$"+smdp+"$"+aktivasyon)
 except:
     console.set_color(1.0, 0.0, 0.0)
     print(K+"[-]KareKod Oluşturulamadı")
