@@ -36,9 +36,9 @@ print("\033[0m")
 print("\033[38;2;255;128;0m")
 print("                        ENZA")
 print("\033[38;2;255;0;255m")
-print("    By Hoqk4baZ")
+print("    Gemiler battı diye")
 print("\033[38;2;153;0;204m")
-print("Çalıp Satanın Bacısına Dw-Chat Girsin")
+print("     Acırmı denizin canı..")
 print("\033[0m")
 
 print("\033[0;38;2;153;0;204m")
@@ -46,7 +46,7 @@ print("TG: @dark_enza")
 print("\033[0m")
 
 print("\033[38;2;0;153;255m")
-print("Yesim.. Hacked By Dark-Enza")
+print("Full Auto Yesim-Esim Hacked")
 print("\033[0m")
 
 
@@ -131,9 +131,9 @@ for thread in threads:
 time.sleep(5)
 
 urls = [
+    "https://api2.yesim.app/code_apply?ref_code&web_key=" + sonuc4 + "&ref_code=MAIL200&lang=en",
     "https://api2.yesim.app/code_apply?ref_code&web_key=" + sonuc4 + "&ref_code=XPEP156&lang=en",
-    "https://api2.yesim.app/code_apply?ref_code&web_key=" + sonuc4 + "&ref_code=XPEP156&lang=en",
-    "https://api2.yesim.app/code_apply?ref_code&web_key=" + sonuc4 + "&ref_code=XPEP156&lang=en",
+    "https://api2.yesim.app/code_apply?ref_code&web_key=" + sonuc4 + "&ref_code=MAIL200&lang=en",
     "https://api2.yesim.app/code_apply?ref_code&web_key=" + sonuc4 + "&ref_code=XPEP156&lang=en"
 ]
 
@@ -141,9 +141,9 @@ def make_request(url):
     res_puan = requests.get(url, verify=False)
     toplam = res_puan.json()[0]
     if toplam == 'success':
-    	print(Y+"[+]200 Puan Eklendi"+R)
+    	print("[+]200 Puan Eklendi")
     else:
-    	print(K+"•Puan Eklenemedi"+R)
+    	print("•Puan Eklenemedi")
 
 threads = []
 for url in urls:
@@ -173,8 +173,8 @@ try:
     sonuc7 = dark1.json()["Qrs"]
     aktivasyon = sonuc7[0][1]
     smdp = sonuc7[0][2]
-    print(T+"[=]SM+DP Adresi: "+smdp)
-    print(T+"[=]Aktivasyon Kodu: "+aktivasyon)
+    print(Y+"[=]SM+DP Adresi: "+smdp)
+    print(Y+"[=]Aktivasyon Kodu: "+aktivasyon)
     print(T+"Android: LPA:1$"+smdp+"$"+aktivasyon)
 except:
     console.set_color(1.0, 0.0, 0.0)
