@@ -51,16 +51,7 @@ print("\033[0m")
 
 
 # -------------------- eposta belirleme --------------------#
-url1 = "https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1"
-headers1 = {
-    'Host': 'www.1secmail.com'
-}
-res1 = requests.get(url1, headers=headers1, verify=False)
-sonuc1 = res1.json()
-eposta = str(sonuc1).strip("['']")
-print(Y+"[+]Eposta belirlendi:",eposta)
-login = eposta
-isim, domain = login.split('@')
+eposta = input("Eposta Gir: ")
 
 # ------- belirlenen epostayı isteğe işle ----#
 url2 = "https://iweb.yesim.app/v1/auth_email?email=" + eposta + "&version=4.1.8&lang=en&platform=3"
@@ -76,20 +67,7 @@ except:
 	
 	
 #-------- kodu al ----------#
-time.sleep(7)
-url3 = "https://www.1secmail.com/api/v1/?action=getMessages&login="+isim+"&domain="+domain
-headers3 = {
-    'Host': 'www.1secmail.com'
-}
-res3 = requests.get(url3, headers=headers3, verify=False)
-try:
-	sonuc3 = res3.json()
-	test = sonuc3[0]
-	dogrula = test["subject"]
-	kod = dogrula.replace('Your Yesim confirmation code: ', '')
-	print(Y+"[*]Kod Alındı:",kod)
-except:
-	print(K+"[-]Alınamadı Tekrar Dene"+R)
+kod = input("Kodu Gir: ")
 	
 	
 	
