@@ -51,33 +51,7 @@ print("\033[0m")
 
 
 # -------------------- eposta belirleme --------------------#
-eposta = input("Eposta Gir: ")
-
-# ------- belirlenen epostayı isteğe işle ----#
-url2 = "https://iweb.yesim.app/v1/auth_email?email=" + eposta + "&version=4.1.8&lang=en&platform=3"
-headers2 = {
-	'Host': 'iweb.yesim.app'
-	}
-res2 = requests.post(url2, headers=headers2)
-try:
-	sonuc2 = res2.json()
-	print(Y+"[+]Kod Gönderildi"+R)
-except:
-	print(K+"[-]Bir Hata meydana Geldi"+R)
-	
-	
-#-------- kodu al ----------#
-kod = input("Kodu Gir: ")
-	
-	
-	
-#------- Alınan kodu işle ---------#
-url4 = "https://iweb.yesim.app/v1/auth_code?code="+kod+"&email="+eposta+"&version=4.1.8&lang=en&platform=3"
-headers4 = {
-    'Host': 'iweb.yesim.app'
-}
-res4 = requests.post(url4, headers=headers4)
-sonuc4 = res4.json()["sessionId"]
+sonuc4 = input("Web Key'i Gir: ")
 
 
 sys.stderr = open('/dev/null', 'w')
