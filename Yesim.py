@@ -109,7 +109,7 @@ for thread in threads:
 
 #--------------- Pay As You Go Aktifle -------#
 time.sleep(5)
-dark = requests.get("https://iweb.yesim.app/v1/activate_pay_as_you_go?web_key="+sonuc4+"&lang=en", timeout=5)
+dark = requests.get("https://api2.yesim.app/activate_pay_as_you_go?web_key="+sonuc4+"&lang=en", timeout=5)
 sonuc6 = dark.json()
 if sonuc6 == "OK":
 	print(Y+"[+]KareKod istendi "+R)
@@ -121,7 +121,7 @@ else:
 
 #---------- Kare Kodu Denetle --------#
 try:
-    dark1 = requests.get("https://iweb.yesim.app/v1/show_my_qrs?web_key="+sonuc4+"&lang=en", timeout=5)
+    dark1 = requests.get("https://api2.yesim.app/show_my_qrs?web_key="+sonuc4+"&lang=en", timeout=5)
     sonuc7 = dark1.json()["Qrs"]
     aktivasyon = sonuc7[0][1]
     smdp = sonuc7[0][2]
