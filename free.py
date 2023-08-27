@@ -20,7 +20,6 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore", category=requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 
-sys.stderr = open('/dev/null', 'w')
 
 print("""
 ________              ______              
