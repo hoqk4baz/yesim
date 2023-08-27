@@ -31,9 +31,9 @@ print("")
 
 print("                        ENZA")
 
-print("    Gemiler battı diye")
+print("    Gemiler batti diye")
 
-print("     Acırmı denizin canı..")
+print("     Acirmi denizin cani..")
 print("")
 
 
@@ -43,7 +43,7 @@ print("")
 
 
 
-print("RedBull eSIM Sınırsız")
+print("RedBull eSIM Sinirsiz")
 print("")
 
 
@@ -56,21 +56,18 @@ kullan = ''.join(random.choice(string.ascii_lowercase) for _ in range(6))
 name = ''.join(random.choice(string.ascii_lowercase) for _ in range(8))  # Rastgele bir name oluştur (6 karakter)
 
 
-print("[!]Dark Enzadan İzin Bekleniyor")
+print("[!]Dark Enzadan Izin Bekleniyor")
 time.sleep(2)
 i = requests.get("https://raw.githubusercontent.com/hoqk4baz/redbull/master/dark.json").json()
 izin = i["dark"]
 if izin == "izinli":
-	print("[•]İzin Verildi\n")
+    print("[•]Izin Verildi\n")
 else:
-	print("[X]"+izin)
-	raise SystemExit()
-
-
+    print("[X]"+izin)
+    raise SystemExit()
 
 eposta = input("[@]Eposta: ")
 sifre = input("[#]Sifre Gir: ")
-
 
 url2 = "https://wndr.azurewebsites.net/api/v1/auth/login/email"
 headers2 = {
@@ -96,14 +93,11 @@ data2 = {
 response2 = requests.post(url2, headers=headers2, json=data2)
 sonuc2 = response2.json()
 try:
-	sonuc2 = response2.json()["accessToken"]
-	print("[+]Token Çekildi 🟢")
+    sonuc2 = response2.json()["accessToken"]
+    print("[+]Token Cekildi")
 except:
-	print("[-]Token Çekilemedi Tekrar Dene🔴")
-	raise SystemExit()
-
-
-
+    print("[-]Token Cekilemedi Tekrar Dene")
+    raise SystemExit()
 
 headers3 = {
     "X-Device-Model": "iPhone13,2",
@@ -120,7 +114,6 @@ headers3 = {
     "User-Agent": "RBM%20data/84 CFNetwork/1390 Darwin/22.0.0",
     "Accept": "*/*"
 }
-
 
 def order_package():
     satın_al = "https://wndr.azurewebsites.net/api/v1/packages/order-free-package"
@@ -140,11 +133,11 @@ while True:
     kontrol = requests.get("https://wndr.azurewebsites.net/api/v1/dashboard/active-packages", headers=headers3)
     kullanilan1 = kontrol.json()["packages"][0]["usedData"]
     kullanilan2 = kontrol.json()["packages"][0]["usedData"]
-    
+
     if kullanilan1 == 1124:
         order_package()
-        
-    print("[•]"+str(kullanilan2)+"MB Kullandın")
+
+    print("[•]"+str(kullanilan2)+"MB Kullandin")
     time.sleep(3)
 
 
