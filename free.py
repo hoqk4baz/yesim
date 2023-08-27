@@ -61,7 +61,7 @@ time.sleep(2)
 i = requests.get("https://raw.githubusercontent.com/hoqk4baz/redbull/master/dark.json").json()
 izin = i["dark"]
 if izin == "izinli":
-    print("[•]Izin Verildi\n")
+    print("[/]Izin Verildi\n")
 else:
     print("[X]"+izin)
     raise SystemExit()
@@ -116,10 +116,10 @@ headers3 = {
 }
 
 def order_package():
-    satın_al = "https://wndr.azurewebsites.net/api/v1/packages/order-free-package"
-    satınal_data = {"packageId": "mDFiwArRhFsEJVhTEd_XU"}
-    satınal = requests.post(satın_al, headers=headers3, json=satınal_data)
-    sonucc = satınal.json()
+    satin_al = "https://wndr.azurewebsites.net/api/v1/packages/order-free-package"
+    satinal_data = {"packageId": "mDFiwArRhFsEJVhTEd_XU"}
+    satinal = requests.post(satin_al, headers=headers3, json=satinal_data)
+    sonucc = satinal.json()
 
     if sonucc == {}:
         print("\n[+]Paket Aktiflendi")
@@ -137,7 +137,7 @@ while True:
     if kullanilan1 == 1124:
         order_package()
 
-    print("[•]"+str(kullanilan2)+"MB Kullandin")
+    print("[*]"+str(kullanilan2)+"MB Kullandin")
     time.sleep(3)
 
 
